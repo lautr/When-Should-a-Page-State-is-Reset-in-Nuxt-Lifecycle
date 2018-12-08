@@ -1,10 +1,12 @@
 <script>
 import Vue from 'vue';
+import { routerGuards, vueHooks } from '~/mixins';
 
 const name = 'AbortPage';
 
 export default Vue.extend({
   name,
+  mixins: [routerGuards, vueHooks],
   asyncData() {
     console.log(`[INFO] nuxt: ${name} / asyncData`);
   },
@@ -13,14 +15,10 @@ export default Vue.extend({
   },
   beforeRouteEnter(to, from, next) {
     console.log(
-      'vue-router: beforeRouteEnter',
-      to.params,
-      from.params,
-      '/ abort the current navigation'
+      `[INFO] vue-router: ${name} / beforeRouteEnter (will abort the current navigation)`
     );
-
     // abort
     next(false);
-  }
+  },
 });
 </script>

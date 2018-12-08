@@ -1,15 +1,28 @@
-# vue-vue-router-nuxt-hooks
+# When Should a Page State is Reset in Nuxt Lifecycle?
 
-![hooks](https://user-images.githubusercontent.com/1491961/45944310-b56d6080-c024-11e8-96d8-2ca3a5b4f61c.png)
+`afterLeaveAndDestroy` method is only called, when the component isn't matched with the next routed components.
 
-## Log types
+This is useful to reset the page state instead of `destroyed` hook, if you use Nuxt.js.
 
-- `[INFO] vue: [page] / [hook]`
-  - Vue.js lifecycle hook
-  - `created`, `beforeUpdate`, `destroyed`, etc.
-- `[INFO] vue-router: [page] / [guard]`
-  - vue-router navigation guard
-  - `beforeRouteEnter`, `beforeRouteUpdate`, `beforeRouteLeave`
-- `[INFO] nuxt: [page] / [method]`
-  - Nuxt.js method
-  - `asyncData`, `fetch`
+(This repo isn't a package. It's just sample code.)
+
+## Flow
+
+## Use
+
+```javascript
+import Vue from 'vue';
+import { afterLeaveAndDestroyHook } from '~/mixins';
+
+export default Vue.extend({
+  mixins: [afterLeaveAndDestroyHook],
+  async fetch(context) {
+    await context.store.dispatch('fetch');
+  },
+  methods: {
+    afterLeaveAndDestroy() {
+      this.$store.dispatch('reset');
+    },
+  },
+});
+```
