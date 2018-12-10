@@ -13,7 +13,11 @@ import Vue from 'vue';
 //   },
 //   beforeRouteLeave(_to, _from, next) {
 //     if (!this.$_afterRouteLeave_unregister) {
-//       this.$_afterRouteLeave_unregister = this.$router.afterEach(() => {
+//       this.$_afterRouteLeave_unregister = this.$router.afterEach((to, from) => {
+//         console.log(
+//           `[INFO] myAfterRouteLeave: ${this.$options.name} (uid: ${this._uid}`
+//         );
+
 //         // `afterRouteLeave` is only called, when this component isn't matched with
 //         // the next routed components.
 //         // This is useful to reset the page state instead of `destroyed` hook, if you use Nuxt.js.
@@ -49,6 +53,10 @@ export const afterLeaveAndDestroyHook = Vue.extend({
     //   );
 
     if (!isMatched) {
+      console.log(
+        `[INFO] afterLeaveAndDestroy: ${this.$options.name} (uid: ${this._uid}`
+      );
+
       // `afterLeaveAndDestroy` method is only called,
       // when the component isn't matched with the next routed components.
       //
