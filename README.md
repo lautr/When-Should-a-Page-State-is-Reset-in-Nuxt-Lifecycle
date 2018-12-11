@@ -1,6 +1,6 @@
 # When Should a Page State is Reset in Nuxt Lifecycle?
 
-`afterLeaveAndDestroy` method is only called, when the component isn't matched with the next routed components.
+`left` method is only called, when the component isn't matched with the next routed components.
 
 This is useful to reset the page state instead of `destroyed` hook, if you use Nuxt.js.
 
@@ -20,7 +20,7 @@ export default Vue.extend({
     await context.store.dispatch('fetch');
   },
   methods: {
-    afterLeaveAndDestroy() {
+    left() {
       this.$store.dispatch('reset');
     },
   },

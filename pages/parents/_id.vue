@@ -30,7 +30,7 @@ export default Vue.extend({
     await context.store.dispatch('parent/fetch');
   },
   methods: {
-    afterLeaveAndDestroy() {
+    left() {
       this.$store.dispatch('parent/reset');
     },
     onIncrement() {

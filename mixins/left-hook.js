@@ -17,7 +17,7 @@ export default Vue.extend({
 
     if (!isMatched) {
       console.log(
-        `[INFO] LeftHook: ${this.$options.name} (uid: ${this._uid} / left`
+        `[INFO] LeftHook: ${this.$options.name} (uid: ${this._uid}) / left`
       );
 
       // `left` method is only called, when the component isn't matched with the next routed components.
