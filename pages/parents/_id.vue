@@ -14,13 +14,14 @@
 
 <script>
 import Vue from 'vue';
-import { routerGuards, vueHooks, afterLeaveAndDestroyHook } from '~/mixins';
+import { routerGuards, vueHooks } from '~/mixins';
+import LeftHook from '~/mixins/left-hook';
 
 const name = 'IdPage';
 
 export default Vue.extend({
   name,
-  mixins: [routerGuards, vueHooks, afterLeaveAndDestroyHook],
+  mixins: [routerGuards, vueHooks, LeftHook],
   asyncData() {
     console.log(`[INFO] nuxt: ${name} / asyncData`);
   },

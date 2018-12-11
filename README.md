@@ -12,10 +12,10 @@ This is useful to reset the page state instead of `destroyed` hook, if you use N
 
 ```javascript
 import Vue from 'vue';
-import { afterLeaveAndDestroyHook } from '~/mixins';
+import LeftHook from '~/mixins/left-hook';
 
 export default Vue.extend({
-  mixins: [afterLeaveAndDestroyHook],
+  mixins: [LeftHook],
   async fetch(context) {
     await context.store.dispatch('fetch');
   },
